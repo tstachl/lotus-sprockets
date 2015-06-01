@@ -113,7 +113,7 @@ module Lotus
       #   end
       #
       #   Bookshelf::Application.configuration.assets.paths
-      #     # => #<Lotus::Utils::LoadPaths:/root/path/assets>
+      #     # => #<Lotus::Config::AssetsPaths:/root/path/assets>
       #
       # @example Adding new assets paths
       #   require 'lotus'
@@ -122,7 +122,7 @@ module Lotus
       #     class Application < Lotus::Application
       #       configure do
       #         serve_assets true
-      #         sprockets.paths << [
+      #         assets.paths << [
       #           'vendor/assets'
       #         ]
       #       end
@@ -130,7 +130,7 @@ module Lotus
       #   end
       #
       #   Bookshelf::Application.configuration.assets.paths
-      #     # => #<Lotus::Utils::LoadPaths:/root/path/assets @paths=["assets", "vendor/assets"]>
+      #     # => #<Lotus::Config::AssetsPaths:/root/path/assets @paths=["assets", "vendor/assets"]>
       #
       def paths
         @paths ||= Config::AssetsPaths.new(@root)
@@ -169,7 +169,7 @@ module Lotus
       #     class Application < Lotus::Application
       #       configure do
       #         serve_assets true
-      #         static << [
+      #         assets.static << [
       #           'vendor/assets'
       #         ]
       #       end
@@ -177,7 +177,7 @@ module Lotus
       #   end
       #
       #   Bookshelf::Application.configuration.assets.static
-      #     # => #<Lotus::Config::Assets @root=#<Pathname:/root/path/assets>, @paths=["public"]>
+      #     # => #<Lotus::Config::Assets @root=#<Pathname:/root/path/assets>, @paths=["public", "vendor/assets"]>
       #
       def static
         @static ||= Config::Assets.new(@root)
